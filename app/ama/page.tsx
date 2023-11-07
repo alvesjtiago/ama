@@ -17,8 +17,9 @@ export default async function AMA({
   const castObject = await castResponse.json()
 
   // AMA user
-  const amaUsername = castObject.cast.mentioned_profiles?.[0]?.username
-  const amaDisplayName = castObject.cast.mentioned_profiles?.[0]?.display_name
+  const amaUser = castObject.cast.mentioned_profiles?.[0]
+  const amaUsername = amaUser?.username
+  const amaDisplayName = amaUser?.display_name
 
   const threadResponse = await fetch(
     'https://api.neynar.com/v1/farcaster/all-casts-in-thread?threadHash=' +
@@ -44,7 +45,10 @@ export default async function AMA({
     if (cast.parentHash == castObject.cast.hash) {
       // Find answer
       const replies = thread.result.casts.filter((obj: any) => {
-        return obj.parentHash === cast.hash
+        return (
+          obj.parentHash === cast.hash &&
+          obj.author.username === amaUser?.username
+        )
       })
       const reply = replies?.[0]
 
@@ -68,9 +72,9 @@ export default async function AMA({
           {amaDisplayName}
         </a>
       </div>
-      <ul className="mt-12">
+      <ul className="mt-18">
         {items.map((item) => (
-          <li className="mt-8" key={item.question}>
+          <li className="mt-12 border-l pl-2 py-2" key={item.question}>
             <div className="flex items-top">
               <a
                 className="inline-block h-5 w-5 shrink-0 mr-2"
@@ -84,8 +88,12 @@ export default async function AMA({
                 />
               </a>{' '}
               <div>
-                <div className="text-md font-bold">{item.question}</div>
-                <div className="text-sm mt-1">{item.answer}</div>
+                <div className="text-md font-bold whitespace-pre-line">
+                  {item.question}
+                </div>
+                <div className="text-sm mt-2 whitespace-pre-line">
+                  {item.answer}
+                </div>
               </div>
             </div>
           </li>

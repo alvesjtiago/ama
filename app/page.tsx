@@ -1,12 +1,12 @@
-"use client";
+'use client'
 
-import { useState } from "react";
+import { useState } from 'react'
 
 export default function Home() {
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState('')
 
   return (
-    <main className="container mx-auto mt-6">
+    <main className="container mx-auto mt-6 px-4">
       <div>
         <label
           htmlFor="price"
@@ -34,5 +34,5 @@ export default function Home() {
         </div>
       </div>
     </main>
-  );
+  )
 }

@@ -28,6 +28,27 @@ export default function Home() {
           Publish AMA
         </a>
       </div>
+
+      <div className="mt-12 text-xs">
+        Examples:
+        <ul className="text-slate-500 text-xs">
+          <li className="mt-1">
+            <a href="/ama?url=https://warpcast.com/dwr.eth/0x390ae86a">
+              https://warpcast.com/dwr.eth/0x390ae86a
+            </a>
+          </li>
+          <li className="mt-1">
+            <a href="/ama?url=https://warpcast.com/dwr.eth/0x7735946a">
+              https://warpcast.com/dwr.eth/0x7735946a
+            </a>
+          </li>
+          <li className="mt-1">
+            <a href="/ama?url=https://warpcast.com/dwr.eth/0x87e91802">
+              https://warpcast.com/dwr.eth/0x87e91802
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   )
 }

@@ -14,10 +14,11 @@ export default async function AMA({
       },
     },
   )
-
   const castObject = await castResponse.json()
 
-  const amaUserName = castObject.cast.mentioned_profiles?.[0]?.display_name
+  // AMA user
+  const amaUsername = castObject.cast.mentioned_profiles?.[0]?.username
+  const amaDisplayName = castObject.cast.mentioned_profiles?.[0]?.display_name
 
   const threadResponse = await fetch(
     'https://api.neynar.com/v1/farcaster/all-casts-in-thread?threadHash=' +
@@ -30,10 +31,14 @@ export default async function AMA({
       },
     },
   )
-
   const thread = await threadResponse.json()
 
-  let items: { q: string; a: string }[] = []
+  let items: {
+    question: string
+    answer: string
+    userAvatar: string
+    userUsername: string
+  }[] = []
 
   thread.result.casts.map((cast: any) => {
     if (cast.parentHash == castObject.cast.hash) {
@@ -43,30 +48,49 @@ export default async function AMA({
       })
       const reply = replies?.[0]
 
+      // Only include items with answers
       if (reply) {
         items.push({
-          q: cast.text,
-          a: reply?.text,
+          question: cast.text,
+          answer: reply?.text,
+          userAvatar: cast?.author?.pfp?.url,
+          userUsername: cast?.author?.username,
         })
       }
     }
   })
 
   return (
-    <main className="container mx-auto my-6 px-4">
-      <div className="text-xl">AMA with {amaUserName}</div>
-      <ul className="mt-8">
-        {items.map((i) => (
-          <li className="mt-6" key={i.q}>
-            <div>
-              <span className="font-bold">Q:</span> {i.q}
-            </div>
-            <div>
-              <span className="font-bold">A:</span> {i.a}
+    <>
+      <div className="text-xl">
+        AMA with{' '}
+        <a href={`https://warpcast.com/${amaUsername}`} target="_blank">
+          {amaDisplayName}
+        </a>
+      </div>
+      <ul className="mt-12">
+        {items.map((item) => (
+          <li className="mt-8" key={item.question}>
+            <div className="flex items-top">
+              <a
+                className="inline-block h-5 w-5 shrink-0 mr-2"
+                href={`https://warpcast.com/${item.userUsername}`}
+                target="_blank"
+              >
+                <img
+                  className="inline-block h-5 w-5 rounded-full ring-2 ring-white"
+                  src={item.userAvatar}
+                  alt=""
+                />
+              </a>{' '}
+              <div>
+                <div className="text-md font-bold">{item.question}</div>
+                <div className="text-sm mt-1">{item.answer}</div>
+              </div>
             </div>
           </li>
         ))}
       </ul>
-    </main>
+    </>
   )
 }

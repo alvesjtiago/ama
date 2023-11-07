@@ -43,21 +43,27 @@ export default async function AMA({
       })
       const reply = replies?.[0]
 
-      items.push({
-        q: cast.text,
-        a: reply?.text,
-      })
+      if (reply) {
+        items.push({
+          q: cast.text,
+          a: reply?.text,
+        })
+      }
     }
   })
 
   return (
     <main className="container mx-auto my-6 px-4">
-      <h3>{amaUserName}</h3>
-      <ul>
+      <div className="text-xl">AMA with {amaUserName}</div>
+      <ul className="mt-8">
         {items.map((i) => (
-          <li className="mt-4" key={i.q}>
-            <div>Q: {i.q}</div>
-            <div>A: {i.a}</div>
+          <li className="mt-6" key={i.q}>
+            <div>
+              <span className="font-bold">Q:</span> {i.q}
+            </div>
+            <div>
+              <span className="font-bold">A:</span> {i.a}
+            </div>
           </li>
         ))}
       </ul>

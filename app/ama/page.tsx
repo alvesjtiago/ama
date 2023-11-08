@@ -1,36 +1,32 @@
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    api_key: process.env.NEYNAR_API_KEY ?? '',
+  },
+}
+
 export default async function AMA({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined }
 }) {
-  const castResponse = await fetch(
+  const mainCastResponse = await fetch(
     'https://api.neynar.com/v2/farcaster/cast?type=url&identifier=' +
       searchParams['url'],
-    {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        api_key: process.env.NEYNAR_API_KEY ?? '',
-      },
-    },
+    options,
   )
-  const castObject = await castResponse.json()
+  const mainCast = await mainCastResponse.json()
 
   // AMA user
-  const amaUser = castObject.cast.mentioned_profiles?.[0]
+  const amaUser = mainCast.cast.mentioned_profiles?.[0]
   const amaUsername = amaUser?.username
   const amaDisplayName = amaUser?.display_name
 
   const threadResponse = await fetch(
     'https://api.neynar.com/v1/farcaster/all-casts-in-thread?threadHash=' +
-      castObject.cast.hash,
-    {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        api_key: process.env.NEYNAR_API_KEY ?? '',
-      },
-    },
+      mainCast.cast.hash,
+    options,
   )
   const thread = await threadResponse.json()
 
@@ -42,7 +38,7 @@ export default async function AMA({
   }[] = []
 
   thread.result.casts.map((cast: any) => {
-    if (cast.parentHash == castObject.cast.hash) {
+    if (cast.parentHash == mainCast.cast.hash) {
       // Find answer
       const replies = thread.result.casts.filter((obj: any) => {
         return (
@@ -52,7 +48,7 @@ export default async function AMA({
       })
       const reply = replies?.[0]
 
-      // Only include items with answers
+      // Only include items with answers from the AMA user
       if (reply) {
         items.push({
           question: cast.text,

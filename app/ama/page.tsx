@@ -1,3 +1,5 @@
+import Linkify from 'linkify-react'
+
 const options = {
   method: 'GET',
   headers: {
@@ -63,11 +65,12 @@ export default async function AMA({
   return (
     <>
       <div className="text-xl">
-        AMA with{' '}
+        <a href="/">AMA</a> with{' '}
         <a href={`https://warpcast.com/${amaUsername}`} target="_blank">
           {amaDisplayName}
         </a>
       </div>
+      <div className="text-sm mt-2">{mainCast.cast.text}</div>
       <ul className="mt-18">
         {items.map((item) => (
           <li className="mt-12 border-l pl-2 py-2" key={item.question}>
@@ -83,13 +86,15 @@ export default async function AMA({
                   alt=""
                 />
               </a>{' '}
-              <div>
-                <div className="text-md font-bold whitespace-pre-line">
-                  {item.question}
-                </div>
-                <div className="text-sm mt-2 whitespace-pre-line">
-                  {item.answer}
-                </div>
+              <div className="w-full ">
+                <Linkify>
+                  <div className="text-md font-bold text-ellipsis overflow-hidden whitespace-pre-line">
+                    {item.question}
+                  </div>
+                  <div className="text-sm mt-2 text-ellipsis overflow-hidden whitespace-pre-line">
+                    {item.answer}
+                  </div>
+                </Linkify>
               </div>
             </div>
           </li>

@@ -21,7 +21,7 @@ export default async function AMA({
   const mainCast = await mainCastResponse.json()
 
   // AMA user
-  const amaUser = mainCast.cast.mentioned_profiles?.[0]
+  const amaUser = mainCast.cast.mentioned_profiles?.[0] || mainCast.cast.author
   const amaUsername = amaUser?.username
   const amaDisplayName = amaUser?.display_name
 

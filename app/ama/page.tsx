@@ -33,6 +33,7 @@ export default async function AMA({
   const thread = await threadResponse.json()
 
   let items: {
+    hash: string
     question: string
     answer: string
     userAvatar: string
@@ -53,6 +54,7 @@ export default async function AMA({
       // Only include items with answers from the AMA user
       if (reply) {
         items.push({
+          hash: cast.hash,
           question: cast.text,
           answer: reply?.text,
           userAvatar: cast?.author?.pfp?.url,
@@ -88,9 +90,14 @@ export default async function AMA({
               </a>{' '}
               <div className="w-full ">
                 <Linkify options={{ className: 'underline' }}>
-                  <div className="text-md font-bold text-ellipsis overflow-hidden whitespace-pre-line">
-                    {item.question}
-                  </div>
+                  <a
+                    href={`https://warpcast.com/${item.userUsername}/${item.hash}`}
+                    target="_blank"
+                  >
+                    <div className="text-md font-bold text-ellipsis overflow-hidden whitespace-pre-line">
+                      {item.question}
+                    </div>
+                  </a>
                   <div className="text-sm mt-2 text-ellipsis overflow-hidden whitespace-pre-line">
                     {item.answer}
                   </div>

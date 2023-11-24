@@ -87,7 +87,7 @@ export default async function AMA({
                 />
               </a>{' '}
               <div className="w-full ">
-                <Linkify>
+                <Linkify options={{ className: 'underline' }}>
                   <div className="text-md font-bold text-ellipsis overflow-hidden whitespace-pre-line">
                     {item.question}
                   </div>

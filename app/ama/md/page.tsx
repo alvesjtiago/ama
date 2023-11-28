@@ -4,6 +4,7 @@ const options = {
     accept: 'application/json',
     api_key: process.env.NEYNAR_API_KEY ?? '',
   },
+  next: { revalidate: 600 },
 }
 
 export default async function AMA({

@@ -37,32 +37,44 @@ export default function Home() {
         </a>
       </div>
 
-      <div className="mt-12 text-xs">
+      {/* <div className="mt-12 text-xs">
         Upcoming:
         <ul className="text-slate-500 text-xs">
-          <li className="mt-1">
-            <a href="https://warpcast.com/dwr.eth/0x029f780b" target="_blank">
-              balajis.eth (2023-11-28)
-            </a>
-          </li>
         </ul>
-      </div>
+      </div> */}
 
       <div className="mt-12 text-xs">
         Past:
         <ul className="text-slate-500 text-xs">
           <li className="mt-1">
-            <a href="/ama?url=https://warpcast.com/dwr.eth/0x390ae86a">
+            <a
+              href="/ama?url=https://warpcast.com/dwr.eth/0x029f7cce"
+              target="_blank"
+            >
+              balajis.eth
+            </a>
+          </li>
+          <li className="mt-1">
+            <a
+              href="/ama?url=https://warpcast.com/dwr.eth/0x390ae86a"
+              target="_blank"
+            >
               vitalik.eth
             </a>
           </li>
           <li className="mt-1">
-            <a href="/ama?url=https://warpcast.com/dwr.eth/0x7735946a">
+            <a
+              href="/ama?url=https://warpcast.com/dwr.eth/0x7735946a"
+              target="_blank"
+            >
               barmstrong
             </a>
           </li>
           <li className="mt-1">
-            <a href="/ama?url=https://warpcast.com/dwr.eth/0x87e91802">
+            <a
+              href="/ama?url=https://warpcast.com/dwr.eth/0x87e91802"
+              target="_blank"
+            >
               fredwilson.eth
             </a>
           </li>

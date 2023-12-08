@@ -37,11 +37,16 @@ export default function Home() {
         </a>
       </div>
 
-      {/* <div className="mt-12 text-xs">
+      <div className="mt-12 text-xs">
         Upcoming:
         <ul className="text-slate-500 text-xs">
+          <li className="mt-1">
+            <a href="https://warpcast.com/dwr.eth/0xac16ed8c" target="_blank">
+              toly
+            </a>
+          </li>
         </ul>
-      </div> */}
+      </div>
 
       <div className="mt-12 text-xs">
         Past:

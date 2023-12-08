@@ -42,7 +42,7 @@ export default function Home() {
         <ul className="text-slate-500 text-xs">
           <li className="mt-1">
             <a href="https://warpcast.com/dwr.eth/0xac16ed8c" target="_blank">
-              toly
+              toly (2023-12-11, 11:00am Pacific)
             </a>
           </li>
         </ul>

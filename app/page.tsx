@@ -37,20 +37,21 @@ export default function Home() {
         </a>
       </div>
 
-      <div className="mt-12 text-xs">
+      {/* <div className="mt-12 text-xs">
         Upcoming:
-        <ul className="text-slate-500 text-xs">
-          <li className="mt-1">
-            <a href="https://warpcast.com/dwr.eth/0xac16ed8c" target="_blank">
-              toly (2023-12-11, 11:00am Pacific)
-            </a>
-          </li>
-        </ul>
-      </div>
+      </div> */}
 
       <div className="mt-12 text-xs">
         Past:
         <ul className="text-slate-500 text-xs">
+          <li className="mt-1">
+            <a
+              href="/ama?url=https://warpcast.com/dwr.eth/0x08541631"
+              target="_blank"
+            >
+              toly
+            </a>
+          </li>
           <li className="mt-1">
             <a
               href="/ama?url=https://warpcast.com/dwr.eth/0x029f7cce"

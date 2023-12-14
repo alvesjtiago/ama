@@ -37,9 +37,14 @@ export default function Home() {
         </a>
       </div>
 
-      {/* <div className="mt-12 text-xs">
+      <div className="mt-12 text-xs">
         Upcoming:
-      </div> */}
+        <ul className="text-slate-500 text-xs">
+          <li className="mt-1">elad (14th December - 1pm PT)</li>
+          <li className="mt-1">garrytan (4th January - 10am PT)</li>
+          <li className="mt-1">cdixon.eth (31st January - 10am PT)</li>
+        </ul>
+      </div>
 
       <div className="mt-12 text-xs">
         Past:

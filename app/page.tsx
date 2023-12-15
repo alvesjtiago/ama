@@ -58,6 +58,14 @@ export default function Home() {
           </li>
           <li className="mt-1">
             <a
+              href="/ama?url=https://warpcast.com/yb/0x7d5219e5"
+              target="_blank"
+            >
+              horsefacts.eth
+            </a>
+          </li>
+          <li className="mt-1">
+            <a
               href="/ama?url=https://warpcast.com/dwr.eth/0x08541631"
               target="_blank"
             >

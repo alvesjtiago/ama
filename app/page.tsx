@@ -40,7 +40,6 @@ export default function Home() {
       <div className="mt-12 text-xs">
         Upcoming:
         <ul className="text-slate-500 text-xs">
-          <li className="mt-1">elad (14th December - 1pm PT)</li>
           <li className="mt-1">garrytan (4th January - 10am PT)</li>
           <li className="mt-1">cdixon.eth (31st January - 10am PT)</li>
         </ul>
@@ -49,6 +48,14 @@ export default function Home() {
       <div className="mt-12 text-xs">
         Past:
         <ul className="text-slate-500 text-xs">
+          <li className="mt-1">
+            <a
+              href="/ama?url=https://warpcast.com/dwr.eth/0xd39ac80f"
+              target="_blank"
+            >
+              elad
+            </a>
+          </li>
           <li className="mt-1">
             <a
               href="/ama?url=https://warpcast.com/dwr.eth/0x08541631"

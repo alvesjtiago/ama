@@ -91,6 +91,10 @@ export async function generateMetadata(
       'fc:frame:post_url':
         '/ama?url=' + searchParams['url'] + '&page=' + pageNumber,
     },
+    openGraph: {
+      title: 'AMA',
+      images: '/api/cast/' + mainCast.cast.hash,
+    },
   }
 }
 

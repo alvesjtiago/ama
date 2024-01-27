@@ -1,3 +1,4 @@
+import { Metadata, ResolvingMetadata } from 'next'
 import Linkify from 'linkify-react'
 
 const options = {
@@ -9,11 +10,95 @@ const options = {
   next: { revalidate: 600 },
 }
 
+export async function generateMetadata(
+  {
+    searchParams,
+  }: {
+    searchParams: { [key: string]: string | string[] | undefined }
+  },
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const page = searchParams['page'] ?? 0
+  const pageNumber = +page + 1
+
+  // // fetch data
+  // const product = await fetch(`https://.../${id}`).then((res) => res.json())
+
+  // // optionally access and extend (rather than replace) parent metadata
+  // const previousImages = (await parent).openGraph?.images || []
+
+  const mainCastResponse = await fetch(
+    'https://api.neynar.com/v2/farcaster/cast?type=url&identifier=' +
+      searchParams['url'],
+    options,
+  )
+  const mainCast = await mainCastResponse.json()
+
+  // AMA user
+  const amaUser = mainCast.cast.mentioned_profiles?.[0] || mainCast.cast.author
+  const amaUsername = amaUser?.username
+  const amaDisplayName = amaUser?.display_name
+
+  const threadResponse = await fetch(
+    'https://api.neynar.com/v1/farcaster/all-casts-in-thread?threadHash=' +
+      mainCast.cast.hash,
+    options,
+  )
+  const thread = await threadResponse.json()
+
+  let items: {
+    hash: string
+    question: string
+    answer: string
+    userAvatar: string
+    userUsername: string
+    likes: number
+  }[] = []
+
+  thread.result.casts.map((cast: any) => {
+    if (cast.parentHash == mainCast.cast.hash) {
+      // Find answer
+      const replies = thread.result.casts.filter((obj: any) => {
+        return (
+          obj.parentHash === cast.hash &&
+          obj.author.username === amaUser?.username
+        )
+      })
+      const reply = replies?.[0]
+
+      // Only include items with answers from the AMA user
+      if (reply) {
+        items.push({
+          hash: cast.hash,
+          question: cast.text,
+          answer: reply?.text,
+          userAvatar: cast?.author?.pfp?.url,
+          userUsername: cast?.author?.username,
+          likes: cast?.reactions?.count,
+        })
+      }
+    }
+  })
+
+  const orderedThreads = items.sort((a, b) => (a.likes > b.likes ? 1 : -1))
+  const hash = orderedThreads[pageNumber].hash
+
+  return {
+    other: {
+      'fc:frame': 'vNext',
+      'fc:frame:image': '/api/cast/' + hash,
+      'fc:frame:button:1': 'Next',
+      'fc:frame:post_url':
+        '/ama?url=' + searchParams['url'] + '&page=' + pageNumber,
+    },
+  }
+}
+
 export default async function AMA({
   searchParams,
-}: {
+}: Readonly<{
   searchParams: { [key: string]: string | string[] | undefined }
-}) {
+}>) {
   const mainCastResponse = await fetch(
     'https://api.neynar.com/v2/farcaster/cast?type=url&identifier=' +
       searchParams['url'],

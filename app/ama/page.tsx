@@ -19,7 +19,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const page = searchParams['page'] ?? 0
-  const pageNumber = +page + 1
+  const pageNumber = +page
 
   // // fetch data
   // const product = await fetch(`https://.../${id}`).then((res) => res.json())
@@ -80,7 +80,7 @@ export async function generateMetadata(
     }
   })
 
-  const orderedThreads = items.sort((a, b) => (a.likes > b.likes ? 1 : -1))
+  const orderedThreads = items.sort((a, b) => b.likes - a.likes)
   const hash = orderedThreads[pageNumber].hash
 
   return {
@@ -93,7 +93,8 @@ export async function generateMetadata(
         '/ama?url=' +
         searchParams['url'] +
         '&page=' +
-        pageNumber,
+        pageNumber +
+        1,
     },
     openGraph: {
       title: 'AMA',

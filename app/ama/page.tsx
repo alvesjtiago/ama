@@ -20,6 +20,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const page = searchParams['page'] ?? 0
   const pageNumber = +page
+  const nextPageNumber = pageNumber + 1
 
   // // fetch data
   // const product = await fetch(`https://.../${id}`).then((res) => res.json())
@@ -93,8 +94,7 @@ export async function generateMetadata(
         '/ama?url=' +
         searchParams['url'] +
         '&page=' +
-        pageNumber +
-        1,
+        nextPageNumber,
     },
     openGraph: {
       title: 'AMA',

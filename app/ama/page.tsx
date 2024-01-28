@@ -37,8 +37,6 @@ export async function generateMetadata(
 
   // AMA user
   const amaUser = mainCast.cast.mentioned_profiles?.[0] || mainCast.cast.author
-  const amaUsername = amaUser?.username
-  const amaDisplayName = amaUser?.display_name
 
   const threadResponse = await fetch(
     'https://api.neynar.com/v1/farcaster/all-casts-in-thread?threadHash=' +

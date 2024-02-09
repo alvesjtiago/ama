@@ -95,9 +95,9 @@ export async function POST(
 
   const orderedThreads = items.sort((a, b) => b.likes - a.likes)
 
-  let hash = orderedThreads[pageNumber].hash
+  let hash = orderedThreads[nextPageNumber].hash
   if (index == 1) {
-    hash = orderedThreads[pageNumber].replyHash
+    hash = orderedThreads[nextPageNumber].replyHash
   }
 
   return new NextResponse(`

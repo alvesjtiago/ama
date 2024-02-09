@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.icon-size {
+  height: 24px;
+  width: 24px;
+}
+
+a {
+  text-decoration: underline !important;
+}

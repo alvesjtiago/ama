@@ -1,5 +1,6 @@
 import { Metadata, ResolvingMetadata } from 'next'
 import Linkify from 'linkify-react'
+import Image from 'next/image'
 
 const options = {
   method: 'GET',
@@ -80,7 +81,7 @@ export async function generateMetadata(
   })
 
   const orderedThreads = items.sort((a, b) => b.likes - a.likes)
-  const hash = orderedThreads[pageNumber].hash
+  const { hash } = orderedThreads[pageNumber]
 
   return {
     other: {
@@ -175,7 +176,7 @@ export default async function AMA({
                 href={`https://warpcast.com/${item.userUsername}`}
                 target="_blank"
               >
-                <img
+                <Image
                   className="inline-block h-5 w-5 rounded-full ring-2 ring-white"
                   src={item.userAvatar}
                   alt=""

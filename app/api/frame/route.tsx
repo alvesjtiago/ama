@@ -106,9 +106,7 @@ export async function POST(
               <head>
                 <title>OG Collections</title>
                 <meta name="fc:frame" content="vNext">
-                <meta name="fc:frame:image" content="${
-                  process.env.BASE_URL + '/api/cast/' + hash
-                }">
+                <meta name="fc:frame:image" content="${`${process.env.BASE_URL}/api/cast/${hash}`}">
                 <meta name="fc:frame:post_url" content="${
                   process.env.BASE_URL +
                   '/api/frame?url=' +

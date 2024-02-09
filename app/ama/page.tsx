@@ -86,13 +86,14 @@ export async function generateMetadata(
     other: {
       'fc:frame': 'vNext',
       'fc:frame:image': process.env.BASE_URL + '/api/cast/' + hash,
-      'fc:frame:button:1': 'Next',
+      'fc:frame:button:1': 'Answer',
+      'fc:frame:button:2': 'Next',
       'fc:frame:post_url':
         process.env.BASE_URL +
-        '/ama?url=' +
+        '/api/frame?url=' +
         searchParams['url'] +
         '&page=' +
-        nextPageNumber,
+        pageNumber,
     },
     openGraph: {
       title: 'AMA',

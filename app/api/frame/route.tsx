@@ -9,16 +9,7 @@ const options = {
   next: { revalidate: 600 },
 }
 
-export async function POST(
-  request: NextRequest,
-  {
-    params,
-    searchParams,
-  }: {
-    params: { hash: string }
-    searchParams: { [key: string]: string | string[] | undefined }
-  },
-) {
+export async function POST(request: NextRequest) {
   const body = await request.json()
 
   const index = body.untrustedData.buttonIndex
@@ -33,12 +24,6 @@ export async function POST(
   if (index == 1) {
     nextPageNumber = pageNumber
   }
-
-  // // fetch data
-  // const product = await fetch(`https://.../${id}`).then((res) => res.json())
-
-  // // optionally access and extend (rather than replace) parent metadata
-  // const previousImages = (await parent).openGraph?.images || []
 
   const mainCastResponse = await fetch(
     'https://api.neynar.com/v2/farcaster/cast?type=url&identifier=' +

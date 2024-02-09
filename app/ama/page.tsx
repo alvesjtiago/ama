@@ -20,13 +20,6 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const page = searchParams['page'] ?? 0
   const pageNumber = +page
-  const nextPageNumber = pageNumber + 1
-
-  // // fetch data
-  // const product = await fetch(`https://.../${id}`).then((res) => res.json())
-
-  // // optionally access and extend (rather than replace) parent metadata
-  // const previousImages = (await parent).openGraph?.images || []
 
   const mainCastResponse = await fetch(
     'https://api.neynar.com/v2/farcaster/cast?type=url&identifier=' +

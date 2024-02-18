@@ -37,20 +37,19 @@ export default function Home() {
         </a>
       </div>
 
-      <div className="mt-12 text-xs">
+      {/* <div className="mt-12 text-xs">
         Upcoming:
         <ul className="text-slate-500 text-xs">
-          <li className="mt-1">garrytan (4th January - 10am PT)</li>
           <li className="mt-1">cdixon.eth (31st January - 10am PT)</li>
         </ul>
-      </div>
+      </div> */}
 
       <div className="mt-12 text-xs">
         Past:
         <ul className="text-slate-500 text-xs">
           <li className="mt-1">
             <a
-              href="/ama?url=https://warpcast.com/dwr.eth/0xd39ac80f"
+              href="/ama?url=https%3A%2F%2Fwarpcast.com%2Fdwr.eth%2F0xd39ac80f"
               target="_blank"
             >
               elad
@@ -58,7 +57,7 @@ export default function Home() {
           </li>
           <li className="mt-1">
             <a
-              href="/ama?url=https://warpcast.com/yb/0x7d5219e5"
+              href="/ama?url=https%3A%2F%2Fwarpcast.com%2Fyb%2F0x7d5219e5"
               target="_blank"
             >
               horsefacts.eth
@@ -66,7 +65,7 @@ export default function Home() {
           </li>
           <li className="mt-1">
             <a
-              href="/ama?url=https://warpcast.com/dwr.eth/0x08541631"
+              href="/ama?url=https%3A%2F%2Fwarpcast.com%2Fdwr.eth%2F0x08541631"
               target="_blank"
             >
               toly
@@ -74,7 +73,7 @@ export default function Home() {
           </li>
           <li className="mt-1">
             <a
-              href="/ama?url=https://warpcast.com/dwr.eth/0x029f7cce"
+              href="/ama?url=https%3A%2F%2Fwarpcast.com%2Fdwr.eth%2F0x029f7cce"
               target="_blank"
             >
               balajis.eth
@@ -82,7 +81,7 @@ export default function Home() {
           </li>
           <li className="mt-1">
             <a
-              href="/ama?url=https://warpcast.com/dwr.eth/0x390ae86a"
+              href="/ama?url=https%3A%2F%2Fwarpcast.com%2Fdwr.eth%2F0x390ae86a"
               target="_blank"
             >
               vitalik.eth
@@ -90,7 +89,7 @@ export default function Home() {
           </li>
           <li className="mt-1">
             <a
-              href="/ama?url=https://warpcast.com/dwr.eth/0x7735946a"
+              href="/ama?url=https%3A%2F%2Fwarpcast.com%2Fdwr.eth%2F0x7735946a"
               target="_blank"
             >
               barmstrong
@@ -98,10 +97,34 @@ export default function Home() {
           </li>
           <li className="mt-1">
             <a
-              href="/ama?url=https://warpcast.com/dwr.eth/0x87e91802"
+              href="/ama?url=https%3A%2F%2Fwarpcast.com%2Fdwr.eth%2F0x87e91802"
               target="_blank"
             >
               fredwilson.eth
+            </a>
+          </li>
+          <li className="mt-1">
+            <a
+              href="/ama?url=https%3A%2F%2Fwarpcast.com%2Fdwr.eth%2F0xe4ec97c9"
+              target="_blank"
+            >
+              garrytan
+            </a>
+          </li>
+          <li className="mt-1">
+            <a
+              href="/ama?url=https%3A%2F%2Fwarpcast.com%2Fdwr.eth%2F0x231c3b60"
+              target="_blank"
+            >
+              cdixon.eth
+            </a>
+          </li>
+          <li className="mt-1">
+            <a
+              href="/ama?url=https%3A%2F%2Fwarpcast.com%2Fli%2F0xc29174e2"
+              target="_blank"
+            >
+              eugene
             </a>
           </li>
         </ul>

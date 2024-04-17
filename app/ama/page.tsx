@@ -73,7 +73,7 @@ export async function generateMetadata(
   })
 
   const orderedThreads = items.sort((a, b) => b.likes - a.likes)
-  const hash = orderedThreads[pageNumber].hash
+  const hash = orderedThreads[pageNumber]?.hash
 
   return {
     other: {

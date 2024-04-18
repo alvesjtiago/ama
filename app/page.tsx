@@ -129,6 +129,20 @@ export default function Home() {
           </li>
         </ul>
       </div>
+
+      <div className="mt-12 text-xs">
+        Launchcaster AMAs:
+        <ul className="text-slate-500 text-xs">
+          <li className="mt-1">
+            <a
+              href="/ama?url=https%3A%2F%2Fwarpcast.com%2Fjayme%2F0x1cab24ac"
+              target="_blank"
+            >
+              nbragg
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   )
 }

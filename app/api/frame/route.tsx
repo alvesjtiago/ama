@@ -57,8 +57,7 @@ export async function POST(request: NextRequest) {
       // Find answer
       const replies = thread.result.casts.filter((obj: any) => {
         return (
-          obj.parentHash === cast.hash &&
-          obj.author.username === amaUser?.username
+          obj.parentHash === cast.hash && obj.author.fname === amaUser?.username
         )
       })
       const reply = replies?.[0]
@@ -70,8 +69,8 @@ export async function POST(request: NextRequest) {
           replyHash: reply?.hash,
           question: cast.text,
           answer: reply?.text,
-          userAvatar: cast?.author?.pfp?.url,
-          userUsername: cast?.author?.username,
+          userAvatar: cast?.author?.avatar_url,
+          userUsername: cast?.author?.fname,
           likes: cast?.reactions?.count,
         })
       }
@@ -89,7 +88,7 @@ export async function POST(request: NextRequest) {
             <!DOCTYPE html>
             <html>
               <head>
-                <title>OG Collections</title>
+                <title>AMA</title>
                 <meta name="fc:frame" content="vNext">
                 <meta name="fc:frame:image" content="${`${process.env.BASE_URL}/api/cast/${hash}`}">
                 <meta name="fc:frame:post_url" content="${

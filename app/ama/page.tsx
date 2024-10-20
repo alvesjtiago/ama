@@ -52,8 +52,7 @@ export async function generateMetadata(
       // Find answer
       const replies = thread.result.casts.filter((obj: any) => {
         return (
-          obj.parentHash === cast.hash &&
-          obj.author.username === amaUser?.username
+          obj.parentHash === cast.hash && obj.author.fname === amaUser?.username
         )
       })
       const reply = replies?.[0]
@@ -64,7 +63,7 @@ export async function generateMetadata(
           hash: cast.hash,
           question: cast.text,
           answer: reply?.text,
-          userAvatar: cast?.author?.pfp?.url,
+          userAvatar: cast?.author?.avatar_url,
           userUsername: cast?.author?.username,
           likes: cast?.reactions?.count,
         })
@@ -127,13 +126,14 @@ export default async function AMA({
     userUsername: string
   }[] = []
 
+  console.log(thread.result.casts[0])
+
   thread.result.casts.map((cast: any) => {
     if (cast.parentHash == mainCast.cast.hash) {
       // Find answer
       const replies = thread.result.casts.filter((obj: any) => {
         return (
-          obj.parentHash === cast.hash &&
-          obj.author.username === amaUser?.username
+          obj.parentHash === cast.hash && obj.author.fname === amaUser?.username
         )
       })
       const reply = replies?.[0]
@@ -144,8 +144,8 @@ export default async function AMA({
           hash: cast.hash,
           question: cast.text,
           answer: reply?.text,
-          userAvatar: cast?.author?.pfp?.url,
-          userUsername: cast?.author?.username,
+          userAvatar: cast?.author?.avatar_url,
+          userUsername: cast?.author?.fname,
         })
       }
     }

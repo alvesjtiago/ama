@@ -80,6 +80,12 @@ export async function generateMetadata(
       'fc:frame:image': process.env.BASE_URL + '/api/cast/' + hash,
       'fc:frame:button:1': 'Answer',
       'fc:frame:button:2': 'Next',
+      'fc:frame:button:3': 'Open AMA',
+      'fc:frame:button:3:action': 'link',
+      'fc:frame:button:3:target':
+        process.env.BASE_URL +
+        '/ama?url=' +
+        encodeURIComponent(searchParams['url'] as string),
       'fc:frame:post_url':
         process.env.BASE_URL +
         '/api/frame?url=' +
@@ -125,8 +131,6 @@ export default async function AMA({
     userAvatar: string
     userUsername: string
   }[] = []
-
-  console.log(thread.result.casts[0])
 
   thread.result.casts.map((cast: any) => {
     if (cast.parentHash == mainCast.cast.hash) {

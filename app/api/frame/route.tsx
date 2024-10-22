@@ -14,7 +14,6 @@ export async function POST(request: NextRequest) {
 
   const index = body.untrustedData.buttonIndex
 
-  console.log(request.url)
   const url = new URL(request.url)
   const page = url.searchParams.get('page') ?? 0
   const pageNumber = +page
@@ -100,6 +99,13 @@ export async function POST(request: NextRequest) {
                 }">
                 <meta property="fc:frame:button:1" content="Answer"/>
                 <meta property="fc:frame:button:2" content="Next"/>
+                <meta property="fc:frame:button:3" content="Open AMA" />
+                <meta property="fc:frame:button:3:action" content="link" />
+                <meta property="fc:frame:button:3:target" content="${
+                  process.env.BASE_URL +
+                  '/ama?url=' +
+                  encodeURIComponent(url.searchParams.get('url') as string)
+                }" />
               </head>
               <body>
               </body>

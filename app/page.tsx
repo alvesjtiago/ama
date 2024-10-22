@@ -127,6 +127,14 @@ export default function Home() {
               eugene
             </a>
           </li>
+          <li className="mt-1">
+            <a
+              href="/ama?url=https%3A%2F%2Fwarpcast.com%2Fmcbain%2F0x1ac96a12"
+              target="_blank"
+            >
+              nonlinear.eth
+            </a>
+          </li>
         </ul>
       </div>
 
@@ -139,6 +147,14 @@ export default function Home() {
               target="_blank"
             >
               nbragg
+            </a>
+          </li>
+          <li className="mt-1">
+            <a
+              href="/ama?url=https%3A%2F%2Fwarpcast.com%2Fjayme%2F0xaa3ca256"
+              target="_blank"
+            >
+              xenbh.eth
             </a>
           </li>
         </ul>
